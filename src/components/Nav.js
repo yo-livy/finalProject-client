@@ -13,7 +13,7 @@ const Nav = () => {
 
   return (
     <div className={user ? "navbar dash" : "navbar"}>
-      {(!user && location.pathname !== "/login") && <NavLink to="/login">Sign in</NavLink>}
+      {(!user && !['/login', '/'].includes(location.pathname)) && <NavLink to="/login">Sign in</NavLink>}
       {!user && <Link to="/register" className='reg'>Sign up</Link>}
       {user && <NavLink to="/dashboard" className={isActive("/dashboard") ? 'menu activeRoute' : 'menu'}>Dashboard</NavLink>}
       {user && <NavLink to="/invest" className={isActive("/invest") ? 'menu activeRoute' : 'menu'}>Invest</NavLink>}
