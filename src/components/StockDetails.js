@@ -12,6 +12,8 @@ const StockDetails = () => {
   const location = useLocation();
   const stock = location.state?.stock;
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
   const [userCash, setUserCash] = useState(JSON.parse(localStorage.getItem("userCash")));
   const userPortfolio = JSON.parse(localStorage.getItem("userPortfolio"));
 
@@ -30,8 +32,6 @@ const StockDetails = () => {
   const [quantityAfterBuy, setQuantityAfterBuy] = useState(false); //From input field
 
   const [loading, setLoading] = useState(false);
-
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 
   //////////////////////

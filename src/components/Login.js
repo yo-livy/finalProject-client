@@ -11,9 +11,9 @@ const Login = () => {
 
   const [error, setError] = useState("");
 
-  const { user, setUser } = useContext(UserContext);
-
   const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+  const { user, setUser } = useContext(UserContext);
 
   const login = async (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ const Login = () => {
       <div className="titleDiv">
         <h1 className="title">MONEYSPACE</h1>
         <div className="desc">
-          <p>Long-term & mid-term investment app</p>
+          <p>Long-term & middle-term investment app</p>
         </div>
       </div>
       <div className="signin">
