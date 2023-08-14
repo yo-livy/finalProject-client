@@ -37,7 +37,7 @@ const Login = () => {
       <div className="titleDiv">
         <h1 className="title">MONEYSPACE</h1>
         <div className="desc">
-          <p>Long-term & middle-term investment app</p>
+          <p>Long-term & mid-term investment app</p>
         </div>
       </div>
       <div className="signin">
