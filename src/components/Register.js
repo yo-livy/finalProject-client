@@ -11,6 +11,8 @@ const Register = () => {
   const [error, setError] = useState("");
   const { user, setUser } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   
 
   const register = async (e) => {
@@ -26,7 +28,7 @@ const Register = () => {
     try {
       const newUser = { username, password };
       const response = await axios.post(
-        "http://localhost:3030/register",
+        `${BASE_URL}/register`,
         newUser
       );
       setUser(response.data.user);

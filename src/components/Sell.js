@@ -16,12 +16,14 @@ const Sell = ({
   const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
   const handleSubmit = async () => {
     setLoading(true);
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:3030/sell",
+        `${BASE_URL}/sell`,
         {
           userid: user.id,
           exchange: stock.exchange,

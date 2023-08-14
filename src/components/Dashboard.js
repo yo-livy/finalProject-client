@@ -26,6 +26,8 @@ const Dashboard = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const Dashboard = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:3030/portfolio/${user.id}`,
+          `${BASE_URL}/portfolio/${user.id}`,
           {
             headers: {
               Authorization: "Bearer " + token,
@@ -57,7 +59,7 @@ const Dashboard = () => {
         setIsLoading(false);
 
         await axios.post(
-          "http://localhost:3030/portfolio/compute",
+          `${BASE_URL}/portfolio/compute`,
           { userId: user.id },
           {
             headers: {

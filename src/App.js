@@ -15,6 +15,7 @@ import StockDetails from './components/StockDetails.js'
 function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   
   useEffect(() => {
@@ -29,7 +30,7 @@ function App() {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const response = await axios.get('http://localhost:3030/verify', {
+          const response = await axios.get(`${BASE_URL}/verify`, {
             headers: {
               'Authorization': 'Bearer ' + token
             }

@@ -14,11 +14,12 @@ Chart.register(LineController, LineElement, PointElement, CategoryScale, LinearS
 
 function PortfolioChart({ userId, userPortfolio, userCash }) {
   const [data, setData] = useState([]);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3030/daily_portfolio/${userId}`);
+        const response = await axios.get(`${BASE_URL}/daily_portfolio/${userId}`);
         const standardizedData = response.data.map(item => ({
             date: format(new Date(item.date), 'yyyy-MM-dd'),
             value: Number(item.value)
