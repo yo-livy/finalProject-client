@@ -11,11 +11,11 @@ const Sell = ({
   setQuantity,
   setUserStockAmount,
   cost,
-  setUserCash
+  setUserCash,
+  refreshUserData
 }) => {
   const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const handleSubmit = async () => {
@@ -41,9 +41,10 @@ const Sell = ({
 
       if (response.status === 200) {
         setMsg("Selling made successfully");
-        setUserStockAmount((prevState) => prevState - Number(quantity));
+        // setUserStockAmount((prevState) => prevState - Number(quantity));
         setQuantity("");
-        setUserCash((prevState) => prevState + Number(cost));
+        // setUserCash((prevState) => prevState + Number(cost));
+        refreshUserData();
       }
     } catch (error) {
       console.log(error.response.data.message);

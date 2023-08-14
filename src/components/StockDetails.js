@@ -4,6 +4,9 @@ import Buy from "./Buy";
 import Sell from "./Sell";
 import { useLocation } from "react-router-dom";
 import './StockDetail.css'
+import loadingImg from '../images/loading.gif'
+
+import UserContext from "../UserContext";
 
 const StockDetails = () => {
   const location = useLocation();
@@ -25,6 +28,54 @@ const StockDetails = () => {
   const [updatedStockPercentage, setUpdatedStockPercentage] = useState(0);
   const [warningMessage, setWarningMessage] = useState("");
   const [quantityAfterBuy, setQuantityAfterBuy] = useState(false); //From input field
+
+  const [loading, setLoading] = useState(false);
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
+
+  //////////////////////
+
+  const { user } = useContext(UserContext);
+
+  const fetchUserData = async () => {
+    setLoading(true);
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        `${BASE_URL}/portfolio/${user.id}`, // Assuming this endpoint provides the required data
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+  
+      // Assuming the response has the required data
+      const updatedCash = parseFloat(response.data.user.cash);
+      setUserCash(updatedCash);
+      localStorage.setItem("userCash", updatedCash);
+  
+      const updatedStockAmount = response.data.userStocks.find(s => s.symbol === stock.symbol).quantity;
+      setUserStockAmount(updatedStockAmount);
+
+      const stockResponse = await axios.get(
+        `https://api.twelvedata.com/quote?symbol=${stock.symbol}&exchange=${stock.exchange}&apikey=${process.env.REACT_APP_ACCESS_KEY_12}`
+    );
+    setDetails(stockResponse.data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
+
+  //////////////////////
 
 
   useEffect(() => {
@@ -136,8 +187,8 @@ const StockDetails = () => {
                 </button>
               </div>
               <div className="lineContainer">
-                <p>Total Cash: ${formatNum(userCash)}</p>
-              <p>Stocks Owned: {userStockAmount}</p>
+                <p>Total Cash: ${loading ? <img style={{width:'25px', height:'25px'}} src={loadingImg} alt="Loading" /> : formatNum(userCash)}</p>
+              <p>Stocks Owned: {loading ? <img style={{width:'25px', height:'25px'}} src={loadingImg} alt="Loading" /> : userStockAmount}</p>
               </div>
               <p className="price">
                 Price: {formatNum(price)} {details.currency}
@@ -171,6 +222,7 @@ const StockDetails = () => {
                   setUserCash={setUserCash}
                   // userCash={userCash}
                   // userPortfolio={userPortfolio}
+                  refreshUserData={fetchUserData}
                 />
               ) : (
                 <Sell
@@ -182,6 +234,7 @@ const StockDetails = () => {
                   setUserStockAmount={setUserStockAmount}
                   cost={cost}
                   setUserCash={setUserCash}
+                  refreshUserData={fetchUserData}
                 />
               )}
                {warningMessage && <p style={{ color: "red" }}>{warningMessage}</p>}

@@ -13,11 +13,11 @@ const Buy = ({
   setQuantityAfterBuy,
   cost,
   setUserCash,
+  refreshUserData
 }) => {
   const { user } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
-
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -43,12 +43,13 @@ const Buy = ({
       if (response.status === 200) {
         console.log(response.data)
         setMsg("Purchase made successfully");
-        setUserStockAmount((prevState) => prevState + Number(quantity));
+        // setUserStockAmount((prevState) => prevState + Number(quantity));
         setQuantity("");
         // setQuantityAfterBuy(false)
         // const updatedPercentage = ((stock.stockValue + cost) / ((userCash) + userPortfolio)) * 100;
         // setUpdatedStockPercentage(updatedPercentage);
-        setUserCash((prevState) => prevState - Number(cost));
+        // setUserCash((prevState) => prevState - Number(cost));
+        refreshUserData();
       }
     } catch (error) {
       console.log(error.response.data.message);
