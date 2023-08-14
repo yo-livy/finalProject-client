@@ -1,0 +1,84 @@
+.mainInvest {
+    padding-top: 125px;
+}
+
+.investTitle {
+    margin: 0;
+    font-family: 'Squada One', cursive;
+    font-size: 72px;
+    color: rgba(11, 32, 63);;
+}
+
+.invsetSubTitle {
+    font-family: 'Squada One', cursive;
+    font-size: 38px;
+    color: rgba(11, 32, 63);
+}
+
+.allstocks {
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+.stock {
+    width: 300px;
+    margin: 5px;
+    font-size: 16px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 300;
+    padding: 2px;
+}
+
+.stock:hover {
+    border: rgba(11, 32, 63);
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(11, 32, 63);
+    color: white;
+}
+
+.stock p {
+    padding: 5px;
+    margin: 2px 15px;
+}
+
+.mainExchanges {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.findstock, .exchanges {
+    font-size: 18px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    padding: 10px;
+    margin: 20px;
+    width: 300px;
+
+}
+
+.exchanges {
+    width: 350px;
+    text-align: center;
+}
+
+.exchangesDescription {
+    font-size: 16px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 300;
+    width: 80vw;
+}
+
+.noresults {
+    text-align: center;
+    font-size: 24px;
+    color: rgba(11, 32, 63);
+    font-family: 'Dosis', sans-serif;
+    font-weight: 300;
+}

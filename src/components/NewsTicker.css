@@ -1,0 +1,28 @@
+.news-ticker {
+    width: 100%;
+    overflow: hidden;
+    background-color: #11102d;
+    color: #fff;
+    font-size: 18px;
+    position: absolute;
+    top: 90px;
+  }
+  
+  .news-ticker p {
+    white-space: nowrap;
+    animation: scrollNews 12000s linear infinite;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+  
+  @keyframes scrollNews {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50000%);
+    }
+  }
+  

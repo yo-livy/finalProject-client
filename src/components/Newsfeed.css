@@ -1,0 +1,39 @@
+.news-feed {
+    margin: 0 auto;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 300;
+    font-size: 22px;
+    color: rgba(11, 32, 63);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50vw;
+}
+
+.news-feed a {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(11, 32, 63);
+}
+
+.news-feed li {
+   margin: 10px;
+}
+
+.news-feed a:hover {
+    color: white;
+    background-color:rgba(11, 32, 63);
+    border-radius: 5px;
+    border: none;
+    padding: 2px;
+}
+
+.nftitle {
+    width: fit-content;
+    color: white;
+    background-color: rgba(11, 32, 63);
+    font-size: 22px;
+    font-family: 'Dosis', sans-serif;
+    font-weight: 500;
+    margin: 0 auto;
+}

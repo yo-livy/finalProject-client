@@ -1,0 +1,85 @@
+.main {
+  height: 100vh;
+  background-image: url('../images/bg.jpg');
+  background-position: center;
+  background-size: cover;
+  }
+
+  .titleDiv {
+    width: fit-content;
+  }
+
+  .title {
+    margin: 0;
+    padding:0;
+    font-family: 'Squada One', cursive;
+    font-size: 12vw;
+    color: white;
+  }
+
+  .desc p {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 300;
+    font-size: 28px;
+    color: white;
+    margin: 0 10px;
+  }
+
+.signin {
+  width: 600px;
+  margin: 125px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 300;
+}
+
+.in-form > * {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: none;
+}
+.in-form input {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  background-color: white;
+}
+
+.in-form button {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 300;
+  margin-top: 45px;
+  cursor: pointer;
+  font-weight: 500;
+  color: white;
+  background-color: rgb(63, 42, 222);
+  font-size: 24px;
+  transition: 0.5s ease-out;
+}
+
+.in-form button:hover {
+  background-color: rgb(38, 35, 206);
+}
+
+.error {
+  background-color: rgba(11, 32, 63);
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.quote {
+  font-size: 22px;
+  color: white;
+  margin-top: 100px;
+  background-color: rgba(11, 32, 63, 0.5);
+  padding: 15px;
+  position: absolute;
+  bottom: 100px;
+  right: 10px;
+}
