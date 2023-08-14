@@ -57,13 +57,15 @@
   cursor: pointer;
   font-weight: 500;
   color: white;
-  background-color: rgb(63, 42, 222);
+  background-color: transparent;
+  border: 3px solid white;
   font-size: 24px;
   transition: 0.5s ease-out;
 }
 
 .in-form button:hover {
   background-color: rgb(38, 35, 206);
+  border: 3px solid rgb(38, 35, 206);
 }
 
 .error {
