@@ -17,7 +17,7 @@ const StockDetails = () => {
   const [userCash, setUserCash] = useState(JSON.parse(localStorage.getItem("userCash")));
   const userPortfolio = JSON.parse(localStorage.getItem("userPortfolio"));
 
-  const [userStockAmount, setUserStockAmount] = useState(stock.quantity || 0);
+  const [userStockAmount, setUserStockAmount] = useState(stock.quantity);
 
   const [details, setDetails] = useState(null);
   const [price, setPrice] = useState(null); //Fetched from api
@@ -56,7 +56,9 @@ const StockDetails = () => {
       setUserCash(updatedCash);
       localStorage.setItem("userCash", updatedCash);
   
-      const updatedStockAmount = response.data.userStocks.find(s => s.symbol === stock.symbol).quantity;
+      // const updatedStockAmount = response.data.userStocks.find(s => s.symbol === stock.symbol).quantity;
+      const updatedStock = response.data.userStocks.find(s => s.symbol === stock.symbol);
+      const updatedStockAmount = updatedStock ? updatedStock.quantity : 0;
       setUserStockAmount(updatedStockAmount);
 
       const stockResponse = await axios.get(
@@ -187,8 +189,8 @@ const StockDetails = () => {
                 </button>
               </div>
               <div className="lineContainer">
-                <p>Total Cash: ${loading ? <img style={{width:'25px', height:'25px'}} src={loadingImg} alt="Loading" /> : formatNum(userCash)}</p>
-              <p>Stocks Owned: {loading ? <img style={{width:'25px', height:'25px'}} src={loadingImg} alt="Loading" /> : userStockAmount}</p>
+                <p>Total Cash: ${loading ? <img style={{width:'20px', height:'20px'}} src={loadingImg} alt="Loading" /> : formatNum(userCash)}</p>
+              <p>Stocks Owned: {loading ? <img style={{width:'20px', height:'20px'}} src={loadingImg} alt="Loading" /> : userStockAmount}</p>
               </div>
               <p className="price">
                 Price: {formatNum(price)} {details.currency}
@@ -205,6 +207,11 @@ const StockDetails = () => {
                   min="1" step="1"
                   value={quantityAfterBuy ? quantity : ''}
                   onChange={(e) => {setQuantity(e.target.value); setQuantityAfterBuy(true); setMsg('')}}
+                  onKeyPress={(e) => {
+                    if (!/[0-9]/.test(e.key) && !e.ctrlKey) {
+                        e.preventDefault();
+                    }
+                }}
                 />
               </div>
           

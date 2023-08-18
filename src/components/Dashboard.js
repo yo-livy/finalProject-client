@@ -180,9 +180,10 @@ const Dashboard = () => {
                   className="square cashbalance tooltip"
                   style={{ width: `${percentCash}%` }}
                   data-tooltip={tooltipTextCash}>
-                  <p>
-                    Cash balance: 💵 {formatNum(cash)} USD 💼{" "}
-                    {formatNum(percentCash)}%
+                  <p className="ticker">
+                    {/* Cash balance: 💵 {formatNum(cash)} USD 💼{" "}
+                    {formatNum(percentCash)}% */}
+                    CASH
                   </p>
                 </div>
 
@@ -201,12 +202,13 @@ const Dashboard = () => {
                       }}
                       data-tooltip={tooltipText}
                       onClick={() => handleStockSelection(stock)}>
-                      {widthPercentage >= 7 && tooltipText.length <= 60 && (
-                        <p>
-                          {stock.name} 💵 {formatNum(stock.stockValue)} USD 💼{" "}
-                          {formatNum(widthPercentage)}%
+                      {/* {widthPercentage >= 7 && tooltipText.length <= 60 && ( */}
+                        <p className="ticker">
+                          {/* {stock.name} 💵 {formatNum(stock.stockValue)} USD 💼{" "}
+                          {formatNum(widthPercentage)}% */}
+                          {stock.symbol}
                         </p>
-                      )}
+                      {/* )} */}
                     </div>
                   );
                 })}

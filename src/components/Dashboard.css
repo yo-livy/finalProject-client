@@ -25,15 +25,24 @@
     width: 75px;
     height: fit-content;
     min-height: 75px;
+    min-width: 25px;
     margin: 5px;
     border-radius: 15px;
-    padding: 10px 20px;
+    padding: 10px;
     font-family: 'Dosis', sans-serif;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 22px;
     color: white;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+}
+
+.ticker {
+    writing-mode: vertical-rl;
+    transform: scaleY(-1) scaleX(-1);
+    padding: 0;
+    margin: 0;
 }
 
 .square:hover {

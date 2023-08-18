@@ -1,31 +1,31 @@
-import { useState, useEffect } from 'react';
-import './NewsTicker.css';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import "./NewsTicker.css";
+import axios from "axios";
 
-const API_KEY = process.env.REACT_APP_ACCESS_KEY_RAPID
+const API_KEY = process.env.REACT_APP_ACCESS_KEY_RAPID;
 
 const NewsTicker = () => {
   const [newsData, setNewsData] = useState([]);
 
   useEffect(() => {
-    const fetchNews= async () => {
+    const fetchNews = async () => {
       const options = {
-        method: 'GET',
-        url: 'https://yahoo-finance15.p.rapidapi.com/api/yahoo/ne/news',
+        method: "GET",
+        url: "https://yahoo-finance15.p.rapidapi.com/api/yahoo/ne/news",
         headers: {
-          'X-RapidAPI-Key': API_KEY,
-          'X-RapidAPI-Host': 'yahoo-finance15.p.rapidapi.com'
-        }
+          "X-RapidAPI-Key": API_KEY,
+          "X-RapidAPI-Host": "yahoo-finance15.p.rapidapi.com",
+        },
       };
-      
+
       try {
-        console.log('Fetching news YF news ...')
+        console.log("Fetching news YF news ...");
         const response = await axios.request(options);
-        setNewsData(response.data); 
+        setNewsData(response.data);
       } catch (error) {
         console.error(error);
-      }  
-    }
+      }
+    };
 
     fetchNews();
   }, []);
@@ -33,12 +33,32 @@ const NewsTicker = () => {
   return (
     <div className="news-ticker">
       <p>
-        {newsData.map(item => item.title).join('   |   ')}
+        {newsData
+          .map((item) => (
+            <a
+              key={item.id}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer">
+              {item.title}
+            </a>
+          ))
+          .reduce((prev, curr) => [prev, "   |   ", curr], "")}
         &nbsp;&nbsp;&nbsp;&nbsp;
-        {newsData.map(item => item.title).join('   |   ')}
-      </p> 
+        {newsData
+          .map((item) => (
+            <a
+              key={item.id}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer">
+              {item.title}
+            </a>
+          ))
+          .reduce((prev, curr) => [prev, "   |   ", curr], "")}
+      </p>
     </div>
-  );  
+  );
 };
 
 export default NewsTicker;

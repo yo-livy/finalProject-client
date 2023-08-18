@@ -47,7 +47,7 @@ const Register = () => {
       <div className="titleDiv">
         <h1 className="title">MONEYSPACE</h1>
         <div className="desc">
-          <p>Long-term & middle-term investment app</p>
+          <p>Where investing meets education. Discover the world of stocks.</p>
         </div>
       </div>
       <div className="signin">

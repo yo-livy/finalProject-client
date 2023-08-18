@@ -24,6 +24,7 @@ const NewsFeed = ({ ticker }) => {
                     for (const t of ticker) {
                         console.log(`Fetching ALPHA news ${t}`)
                         const response = await axios(`https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${t}&apikey=${API_KEY}`);
+                        console.log('Response data feed', response.data)
                         allNews.push(...response.data.feed);
                     }
     

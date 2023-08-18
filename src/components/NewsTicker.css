@@ -25,4 +25,8 @@
       transform: translateX(-50000%);
     }
   }
-  
+
+  a {
+    text-decoration: none;
+    color: white;
+  }

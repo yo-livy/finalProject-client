@@ -19,10 +19,12 @@
 
   .desc p {
     font-family: 'Dosis', sans-serif;
-    font-weight: 300;
-    font-size: 28px;
+    font-weight: 400;
+    font-size: 32px;
     color: white;
-    margin: 0 10px;
+    margin: 0;
+    background-color: rgba(11, 32, 63, 0.5);
+    padding: 15px;
   }
 
 .signin {
