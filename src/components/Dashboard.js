@@ -92,8 +92,8 @@ const Dashboard = () => {
     const num3 = num2.replace(/,/g, " ");
     return num3;
   };
-  const percent = formatNum((total / 1000000 - 1) * 100);
-  const notPercent = formatNum(total - 1000000) + " USD";
+  const percent = formatNum((total / 10000 - 1) * 100);
+  const notPercent = formatNum(total - 10000) + " USD";
 
 
   const PercentDisplay = React.memo(() => {
