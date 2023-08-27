@@ -14,8 +14,15 @@ const StockDetails = () => {
 
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
-  const [userCash, setUserCash] = useState(JSON.parse(localStorage.getItem("userCash")));
-  const userPortfolio = JSON.parse(localStorage.getItem("userPortfolio"));
+  const [userCash, setUserCash] = useState(() => {
+    const cash = localStorage.getItem("userCash");
+    return cash === 'NaN' ? null : JSON.parse(cash);
+  });
+  const userPortfolio = (() => {
+    const portfolio = localStorage.getItem("userPortfolio");
+    return portfolio === 'NaN' ? null : JSON.parse(portfolio);
+  })();
+
 
   const [userStockAmount, setUserStockAmount] = useState(stock.quantity);
 
@@ -152,6 +159,9 @@ const StockDetails = () => {
   }, []);
 
   const formatNum = (num) => {
+    if (num === null || num === undefined || isNaN(num)) {
+      return 'API limit, wait a little and refresh';
+    }
     try {
       const num1 = Number(num.toFixed(2));
       const num2 = num1.toLocaleString('en-US', { useGrouping: true });

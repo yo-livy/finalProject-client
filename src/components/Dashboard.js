@@ -87,6 +87,9 @@ const Dashboard = () => {
 
   const tickers = useMemo(() => stocks.map((item) => item.symbol), [stocks]);
   const formatNum = (num) => {
+    if (num === null || num === undefined || isNaN(num)) {
+      return 'API limit, wait a little and refresh';
+    }
     const num1 = Number(num.toFixed(2));
     const num2 = num1.toLocaleString("en-US", { useGrouping: true });
     const num3 = num2.replace(/,/g, " ");
