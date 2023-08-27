@@ -23,6 +23,7 @@ const Dashboard = () => {
   const [portfolioValue, setPortfolioValue] = useState(0);
   const [percentCash, setPercentCash] = useState(0);
   const [visibleTransactions, setVisibleTransactions] = useState(5);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,6 +44,9 @@ const Dashboard = () => {
             },
           }
         );
+        if (!response.data || response.data.length === 0) {
+          throw new Error("API limit reached, please wait a minute and try again");
+        }
         setDate(
           format(new Date(response.data.user.created_date), "dd MMM yyyy")
         );
@@ -70,6 +74,7 @@ const Dashboard = () => {
 
       } catch (error) {
         console.error("Error fetching user data:", error);
+        setErrorMessage(error.message);
         setIsLoading(false);
       }
     };
@@ -138,6 +143,7 @@ const Dashboard = () => {
   return (
     <>
       <NewsTicker />
+      {errorMessage && <div className="error">{errorMessage}</div>}
       <div className="mainDash">
         <div className="totalDiv">
           <span className="total">{formatNum(total)} USD</span>
