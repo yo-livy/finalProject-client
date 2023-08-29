@@ -37,6 +37,7 @@
   align-items: center;
   font-family: 'Dosis', sans-serif;
   font-weight: 300;
+  text-align: center;
 }
 
 .in-form > * {
@@ -75,6 +76,7 @@
   color: white;
   font-size: 18px;
   text-align: center;
+  padding: 10px;
 }
 
 .quote {

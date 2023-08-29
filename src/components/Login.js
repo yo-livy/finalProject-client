@@ -42,11 +42,14 @@ const Login = () => {
       </div>
       <div className="signin"> 
         {loading ? (
+          <div>
           <img
             style={{ width: "65px", height: "65px" }}
             src={loadingImg}
             alt="Loading..."
           />
+          <p className="error">Connecting to ElephantSQL. The initial connection may take a few minutes due to demo version limitations. Thank you for your patience!</p>
+          </div>
         ) : (
           <div className="formDiv">
             <form onSubmit={login} className="in-form">
